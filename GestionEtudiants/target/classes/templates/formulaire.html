@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8" />
+    <title>Ajouter une personne</title>
+</head>
+<body>
+<h1>Ajouter une personne</h1>
+    <form th:action="@{/ajouterEtudiant}" th:object="${etudiant}" method="post">
+        <label>Niveau :</label>
+        <select th:field="*{classe.niveau}">
+            <option th:each="niveau : ${niveaux}" th:value="${niveau.id}" th:text="${niveau.intitule}"></option>
+        </select>
+        <br />
+
+        <input type="hidden" th:value="${etudiant.getClasse().getNiveau().getId()}" th:attr="data-classe-niveau-id=${etudiant.classe.niveau.id}" id="classe-niveau-id">
+
+        <label>Classe :</label>
+        <select th:field="*{classe}">
+            <option value="">-- Sélectionner une classe --</option>
+            <option th:each="classe : ${classes}" th:if="${classe.niveau.id == classeNiveauId}" th:value="${classe.id}" th:text="${classe.nom}"></option>
+        </select>
+        <br />
+
+        <label>Nom :</label>
+        <input type="text" th:field="*{nom}" />
+        <br />
+
+        <label>Prénom :</label>
+        <input type="text" th:field="*{prenom}" />
+        <br />
+
+        <label>Date de Naissance :</label>
+        <input th:field="*{dateNaissance}" type="number"/>
+        <br />
+
+        <input type="submit" value="Enregistrer" />
+    </form>
+    </body>
+</html>

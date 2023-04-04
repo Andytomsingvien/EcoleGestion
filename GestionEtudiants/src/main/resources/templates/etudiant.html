@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+
+  <meta charset="UTF-8" />
+  <title>Informations sur l'étudiant</title>
+
+</head>
+<body>
+<h1>Informations sur l'étudiant</h1>
+<table>
+  <tr>
+    <td>Nom :</td>
+    <td th:text="${etudiant.nom}"></td>
+  </tr>
+  <tr>
+    <td>Prénom :</td>
+    <td th:text="${etudiant.prenom}"></td>
+  </tr>
+  <tr>
+    <td>Date de naissance :</td>
+    <td th:text="${etudiant.dateNaissance}"></td>
+  </tr>
+  <tr>
+    <td>Classe :</td>
+    <td th:text="${etudiant.getClasse().getNom()}"></td>
+  </tr>
+</table>
+</body>
+</html>
